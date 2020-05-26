@@ -1,4 +1,5 @@
 
 export interface SearchFoodRequest {
-    name?: string;
+  exact: boolean;
+  name?: string;
 }
