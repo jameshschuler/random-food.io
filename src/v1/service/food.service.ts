@@ -30,27 +30,16 @@ const foods: Food[] = [
   }
 ];
 
-const searchFoodsById = ( id: number ): Food | undefined => {
-  return foods.find( e => e.id === id );
+const getFoods = (): Food[] => {
+  return foods;
 }
 
-const searchFoodsByName = ( name: string | undefined, exact: boolean = false ) => {
-  let results: Food[];
-
-  if ( name && name !== '' ) {
-    if ( exact ) {
-      results = foods.filter( f => f.name.toLocaleLowerCase() === name.toLocaleLowerCase() );
-    } else {
-      results = foods.filter( f => f.name.toLocaleLowerCase().includes( name.toLocaleLowerCase() ) );
-    }
-  } else {
-    results = foods;
-  }
-
-  return results;
+const getFoodById = ( id: number ): Food | undefined => {
+  const food = foods.find( e => e.id === Number( id ) );
+  return food;
 }
 
 export default {
-  searchFoodsById,
-  searchFoodsByName
+  getFoods,
+  getFoodById
 };

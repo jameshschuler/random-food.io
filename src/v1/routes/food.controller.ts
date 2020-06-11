@@ -1,24 +1,21 @@
-import { SearchFoodRequest } from '../models/request/searchFoodRequest.ts';
 import foodService from '../service/food.service.ts';
 
-export const searchFoodsById = ( context: any ) => {
+export const getFoods = ( context: any ) => {
+  const response = foodService.getFoods();
+
+  context.response.body = response;
+}
+
+export const getFoodById = ( context: any ) => {
   const params = context.params;
+  const response = foodService.getFoodById( params.id );
 
-  const response = foodService.searchFoodsById( params.id );
-
-  context.response.status = 200;
-  context.response.body = {
-    food: response
-  };
-};
-
-export const searchFoodsByName = ( context: any ) => {
-  const params = context.params as SearchFoodRequest;
-
-  const response = foodService.searchFoodsByName( params.name, params.exact );
-
-  context.response.status = 200;
-  context.response.body = {
-    foods: response
-  };
-};
+  if ( response ) {
+    context.response.status = 200;
+    context.response.body = {
+      food: response
+    };
+  } else {
+    context.response.status = 404;
+  }
+}
