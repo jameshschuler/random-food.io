@@ -35,7 +35,7 @@ const getFoods = (): Food[] => {
 }
 
 const getFoodById = ( id: number ): Food | undefined => {
-  const food = foods.find( e => e.id === Number( id ) );
+  const food = foods.find( e => e.id === id );
   return food;
 }
 

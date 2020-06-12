@@ -8,7 +8,14 @@ export const getFoods = ( context: any ) => {
 
 export const getFoodById = ( context: any ) => {
   const params = context.params;
-  const response = foodService.getFoodById( params.id );
+
+  const id = parseInt( params.id );
+  if ( isNaN( id ) ) {
+    context.response.status = 400;
+    return;
+  }
+
+  const response = foodService.getFoodById( id );
 
   if ( response ) {
     context.response.status = 200;

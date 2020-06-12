@@ -1,0 +1,17 @@
+{
+  "allow": [
+    "net",
+    "env"
+  ],
+  "env": {
+    "PORT": "",
+    "HOST": ""
+  },
+  "$schema": "https://deno.land/x/denon/schema.json",
+  "scripts": {
+    "start": {
+      "cmd": "deno run ./src/server.ts",
+      "desc": "Run the server"
+    }
+  }
+}
